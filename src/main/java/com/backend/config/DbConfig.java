@@ -15,6 +15,7 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBuilder;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+
 import com.backend.DAO.BlogDAO;
 
 import com.backend.DAO.BlogDAOImpl;
@@ -69,6 +70,7 @@ public class DbConfig {
 		sessionBuilder.addAnnotatedClasses(Forum.class);
 		sessionBuilder.addAnnotatedClasses(UserDetail.class);
 		sessionBuilder.addAnnotatedClass(Job.class);
+		/*sessionBuilder.addAnnotatedClass(BlogComments.class);*/
 		sessionBuilder.scanPackages("com.backend");
 		System.out.println("Session is created................!");
 
@@ -114,4 +116,12 @@ public class DbConfig {
 		System.out.println("Job DAO object Created");
 		return new JobDAOImpl(sessionFactory);
 	}
+	
+	/*@Autowired
+	@Bean(name="blogcommentDAO")
+	public BlogCommentDAO getBlogCommentDAO(SessionFactory sessionFactory)
+	{
+		System.out.println("BlogComment DAO object Created");
+		return new BlogCommentDAOImpl(sessionFactory);
+	}*/
 }

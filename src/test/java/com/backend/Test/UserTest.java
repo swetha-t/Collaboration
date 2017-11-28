@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import java.util.List;
 
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
@@ -31,18 +32,18 @@ static UserDAO  userDAO;
 
 		userDAO=(UserDAO)context.getBean("userDAO");
 	}
-	
+	@Ignore
 	@Test
 	public void addUserTest()
 	{
 		UserDetail user=new UserDetail();
-		user.setUserId(13);
+		user.setUserId(14);
 		user.setFirstName("John");
-		user.setLastName("mike");
-		user.setEmailId("john@gmail.com");
-		user.setPassword("7890");
+		user.setLastName("abraham");
+		user.setEmailId("john14@gmail.com");
+		user.setPassword("1230");
 		user.setRole("Admin");
-		user.setStatus("available");
+		user.setStatus("P");
 		user.setIsOnline("N");
 		assertTrue("Problem in Inserting user", userDAO.addUserDetail(user));
 

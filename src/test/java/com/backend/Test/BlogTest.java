@@ -30,7 +30,7 @@ static BlogDAO blogDAO;
 		blogDAO=(BlogDAO)context.getBean("blogDAO");
 	}
 	
-
+@Ignore
 	@Test
 	public void addBlogTest()
 	{

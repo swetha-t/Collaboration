@@ -31,7 +31,7 @@ static ForumDAO  forumDAO;
 		 forumDAO=(ForumDAO)context.getBean("forumDAO");
 	}
 
-	
+	@Ignore
 	@Test
 	public void addTest()
 	{
