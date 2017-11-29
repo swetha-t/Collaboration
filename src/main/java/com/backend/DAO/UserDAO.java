@@ -7,11 +7,13 @@ import com.backend.model.UserDetail;
 
 public interface UserDAO {
 	
-	public boolean addUserDetail(UserDetail user);
+	public boolean addUser(UserDetail user);
 	public boolean updateOnlineStatus(String status, UserDetail user);
-/*	public UserDetail getUserDetail(String username);*/
+
 	public List<UserDetail> getAllUserDetails();
-	public UserDetail getUserDetails(String username);
+	public UserDetail getUser(String username);
+	public UserDetail getByEmail(String emailId);
+	public boolean delete(String emailId);
 	
 
 }

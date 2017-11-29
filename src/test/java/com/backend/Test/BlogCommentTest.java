@@ -37,8 +37,7 @@ static BlogCommentDAO blogcommentDAO;
 	blogcomment.setComment("good blog");
 	blogcomment.setCommentDate(new java.util.Date());
 	blogcomment.setUsername("rahul");
-	blogcomment.setBlogId(1001);
-	blogcomment.setUserId(12);
+
 	
 	assertTrue("Problem in Inserting BlogComment",blogcommentDAO.addBlogComment(blogcomment));
 }

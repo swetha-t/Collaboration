@@ -12,6 +12,7 @@ import org.springframework.context.annotation.ComponentScan;
 
 import com.backend.DAO.UserDAO;
 import com.backend.config.DbConfig;
+import com.backend.model.Blog;
 import com.backend.model.Forum;
 import com.backend.model.Job;
 import com.backend.model.UserDetail;
@@ -45,7 +46,7 @@ static UserDAO  userDAO;
 		user.setRole("Admin");
 		user.setStatus("P");
 		user.setIsOnline("N");
-		assertTrue("Problem in Inserting user", userDAO.addUserDetail(user));
+		assertTrue("Problem in Inserting user", userDAO.addUser(user));
 
 	}
 
@@ -57,6 +58,14 @@ static UserDAO  userDAO;
 		{
 			System.out.println("EmailID:"+ user.getEmailId() + "Status:"+ user.getStatus());
 		}
+	}
+	@Ignore	
+		@Test
+		public void isOnlineTest()
+		{
+			UserDetail user=(UserDetail)userDAO.getUser("swetha");
+			assertTrue("Problem in updating",userDAO.updateOnlineStatus("N", user));
+		
 		
 		/*@Transactional
 		@Test

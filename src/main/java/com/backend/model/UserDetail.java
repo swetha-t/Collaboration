@@ -1,8 +1,9 @@
-package com.backend.model;
+ package com.backend.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 @Entity
 @Table
 public class UserDetail {
@@ -15,6 +16,25 @@ String password;
 String role;
 String status;
 String isOnline;
+
+@Transient
+private String errorCode;
+
+@Transient
+private String errorMsg;
+
+public String getErrorCode() {
+	return errorCode;
+}
+public void setErrorCode(String errorCode) {
+	this.errorCode = errorCode;
+}
+public String getErrorMsg() {
+	return errorMsg;
+}
+public void setErrorMsg(String errorMsg) {
+	this.errorMsg = errorMsg;
+}
 public int getUserId() {
 	return userId;
 }

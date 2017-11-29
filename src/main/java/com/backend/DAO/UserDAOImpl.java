@@ -20,6 +20,7 @@ public class UserDAOImpl implements UserDAO {
 	@Autowired
 	UserDAO userDAO;
 	
+	
 	public UserDAOImpl(SessionFactory sessionFactory)
 	{
 		this.sessionFactory=sessionFactory;
@@ -44,22 +45,6 @@ public class UserDAOImpl implements UserDAO {
 
 
 	
-	@Transactional
-	public boolean addUserDetail(UserDetail user) {
-		try
-		{
-		sessionFactory.getCurrentSession().save(user);
-		return true;
-		}
-		catch(Exception e)
-		{
-		System.out.println("Exception occured:" +e);
-		return false;
-		}	
-	}
-
-
-
 	public List<UserDetail> getAllUserDetails() {
 		Session session=sessionFactory.openSession();
 		 List<UserDetail> user=(List<UserDetail>)session.createQuery("from UserDetail").list();
@@ -74,6 +59,51 @@ public class UserDAOImpl implements UserDAO {
 		session.close();
 		return user;
 	}
+
+
+@Transactional
+public boolean addUser(UserDetail user) {
+	try
+	{
+	sessionFactory.getCurrentSession().save(user);
+	return true;
+	}
+	catch(Exception e)
+	{
+	System.out.println("Exception occured:" +e);
+	return false;
+	}	
+}
+
+
+
+public UserDetail getUser(String username) {
+	Session session=sessionFactory.openSession();
+	UserDetail user=(UserDetail)session.get(UserDetail.class,username);
+	session.close();
+	return user;
+}
+
+
+
+public UserDetail getByEmail(String emailId) {
+return(UserDetail)sessionFactory.getCurrentSession().get(UserDetail.class,emailId );
+}
+
+
+
+public boolean delete(String emailId) {
+	try
+	{
+	sessionFactory.getCurrentSession().delete(getByEmail(emailId));
+	return true;
+	}
+	catch(Exception e)
+	{
+	System.out.println("Exception occured:" +e);
+	return false;
+	}	
+}
 
 	
 
