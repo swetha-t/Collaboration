@@ -1,4 +1,4 @@
-package com.collaborate.middleware;
+package com.backend.middleware;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
