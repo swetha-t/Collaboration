@@ -16,6 +16,7 @@ import com.backend.config.DbConfig;
 import com.backend.model.Forum;
 
 @ComponentScan("com.backend")
+@Ignore
 public class ForumTest {
 	
 static ForumDAO  forumDAO;

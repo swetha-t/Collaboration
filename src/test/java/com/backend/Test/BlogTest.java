@@ -16,6 +16,7 @@ import com.backend.config.DbConfig;
 import com.backend.model.Blog;
 
 @ComponentScan("com.backend")
+@Ignore
 public class BlogTest {
 static BlogDAO blogDAO;
 	

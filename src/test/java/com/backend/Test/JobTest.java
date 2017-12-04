@@ -16,7 +16,7 @@ import com.backend.DAO.JobDAO;
 import com.backend.config.DbConfig;
 import com.backend.model.Forum;
 import com.backend.model.Job;
-
+@Ignore
 public class JobTest {
 
 static JobDAO jobDAO;

@@ -30,6 +30,35 @@ public class BlogController {
 			return new ResponseEntity<String>("Error in Response Entity",HttpStatus.SERVICE_UNAVAILABLE);
 		}
 		}
+	
+	@PostMapping(value="/updateBlog")
+	public ResponseEntity<String> updateBlog(@RequestBody Blog blog)
+	{
+		if(blogDAO.updateBlog(blog))
+		{
+			return new ResponseEntity<String>("Blog updated",HttpStatus.OK);
+			
+		}
+		else
+		{
+			return new ResponseEntity<String>("Error in Response Entity",HttpStatus.SERVICE_UNAVAILABLE);
+		}
+		}
+	
+	
+	@PostMapping(value="/deleteBlog")
+	public ResponseEntity<String> deleteBlog(@RequestBody Blog blog)
+	{
+		if(blogDAO.deleteBlog(blog))
+		{
+			return new ResponseEntity<String>("Blog deleted",HttpStatus.OK);
+			
+		}
+		else
+		{
+			return new ResponseEntity<String>("Error in Response Entity",HttpStatus.SERVICE_UNAVAILABLE);
+		}
+		}
 	}
 	
 

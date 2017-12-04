@@ -1,4 +1,4 @@
-package com.backend.model;
+/*package com.backend.model;
 
 import java.util.Date;
 
@@ -9,17 +9,17 @@ import javax.persistence.Table;
 @Table
 public class ForumComment {
 @Id
-int forumcommentid;
-/*int forumId;
-int userId;*/
+int id;
+int forumId;
+int userId;
 String comment,username;
 Date commentDate;
 
 public int getId() {
-	return forumcommentid;
+	return id;
 }
 public void setId(int id) {
-	this.forumcommentid = id;
+	this.id = id;
 }
 public String getComment() {
 	return comment;
@@ -43,3 +43,4 @@ public void setCommentDate(Date commentDate) {
 
 }
 
+*/

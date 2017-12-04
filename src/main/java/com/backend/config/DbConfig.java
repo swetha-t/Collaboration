@@ -15,12 +15,8 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBuilder;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-
 import com.backend.DAO.BlogDAO;
-
 import com.backend.DAO.BlogDAOImpl;
-import com.backend.DAO.ForumCommentDAO;
-import com.backend.DAO.ForumCommentDAOImpl;
 import com.backend.DAO.ForumDAO;
 import com.backend.DAO.ForumDAOImpl;
 import com.backend.DAO.JobDAO;
@@ -28,12 +24,9 @@ import com.backend.DAO.JobDAOImpl;
 import com.backend.DAO.UserDAO;
 import com.backend.DAO.UserDAOImpl;
 import com.backend.model.Blog;
-
 import com.backend.model.Forum;
-import com.backend.model.ForumComment;
 import com.backend.model.Job;
 import com.backend.model.UserDetail;
-
 
 
 @Configuration
@@ -73,7 +66,7 @@ public class DbConfig {
 		sessionBuilder.addAnnotatedClasses(Forum.class);
 		sessionBuilder.addAnnotatedClasses(UserDetail.class);
 		sessionBuilder.addAnnotatedClass(Job.class);
-		sessionBuilder.addAnnotatedClasses(ForumComment.class);
+	/*	sessionBuilder.addAnnotatedClasses(ForumComment.class);*/
 	/*	sessionBuilder.addAnnotatedClass(BlogComments.class);*/
 		sessionBuilder.scanPackages("com.backend");
 		System.out.println("Session is created................!");
@@ -121,13 +114,13 @@ public class DbConfig {
 		return new JobDAOImpl(sessionFactory);
 	}
 	
-	@Autowired
+	/*@Autowired
 	@Bean(name="forumcommentDAO")
 	public ForumCommentDAO getForumCommentDAO(SessionFactory sessionFactory)
 	{
 		System.out.println("Forum Comment DAO object Created");
 		return new ForumCommentDAOImpl(sessionFactory);
-	}
+	}*/
 	
 	/*
 	@Autowired

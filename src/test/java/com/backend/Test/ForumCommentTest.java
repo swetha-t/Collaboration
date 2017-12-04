@@ -1,4 +1,4 @@
-package com.backend.Test;
+/*package com.backend.Test;
 
 import static org.junit.Assert.assertTrue;
 
@@ -42,4 +42,4 @@ public void addForumTest()
 	assertTrue("Problem in Inserting forum comment", forumcommentDAO.addForumComment(forum));
 }
 
-}
+}*/

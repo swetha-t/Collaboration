@@ -1,4 +1,4 @@
-package com.backend.middleware;
+package com.backend.Restconfig;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
