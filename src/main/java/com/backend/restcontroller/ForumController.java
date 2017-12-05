@@ -22,7 +22,7 @@ public class ForumController {
 	ForumDAO forumDAO;
 	
 	@PostMapping(value="/insertForum")
-	public ResponseEntity<String> insertBlog(@RequestBody Forum forum)
+	public ResponseEntity<String> insertForum(@RequestBody Forum forum)
 	{
 		if(forumDAO.addForum(forum))
 		{
@@ -36,7 +36,7 @@ public class ForumController {
 		}
 	
 	@PostMapping(value="/updateForum")
-	public ResponseEntity<String> updateBlog(@RequestBody Forum forum)
+	public ResponseEntity<String> updateForum(@RequestBody Forum forum)
 	{
 		if(forumDAO.updateForum(forum))
 		{
