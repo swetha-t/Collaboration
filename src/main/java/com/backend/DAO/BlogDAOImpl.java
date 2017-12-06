@@ -85,7 +85,7 @@ Session session=sessionFactory.openSession();
 		session.close();
 		return blogList;
 	}
-
+@Transactional
 	public boolean approveBlog(Blog blog) {
 		try{
 						blog.setStatus("A");
@@ -99,7 +99,7 @@ Session session=sessionFactory.openSession();
 			 				}	
 			 			}
 	
-
+@Transactional
 	public boolean rejectBlog(Blog blog) {
 		try{
 			blog.setStatus("N");
