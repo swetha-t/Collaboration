@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<form id="blogformid" method="post">
+<table width="100%">
+
+<tr bgcolor="yellow">
+    <td>Blog Name</td>
+    <td>Blog Content</td>
+    <td colspan="2">Operations</td> 
+ </tr>
+ 
+ <tr bgcolor="orange" ng-repeat="blog in blogdata">
+  <td><a href="Blog Page">{{blog.blogName}}</a></td>
+  <td>{{blog.blogContent}}</td>
+  <td><input type="submit" value="Delete" ng-click="deleteBlog()blog.blogId)"></td>
+    <td><input type="submit" value="Edit" ng-click="editBlog()blog.blogId)"></td>
+  </tr>
+ 
+</table>
+</form>
+</body>
+</html>
