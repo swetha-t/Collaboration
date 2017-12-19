@@ -1,30 +1,33 @@
-myapp.controller("BlogController",function($scope,$http,$location)
+myapp.controller("BlogController",function($scope,$http)
+{
+	$scope.blog={blogId:1010,blogName:"",blogContent:"",createDate:"",likes:0,username:"",status:"NA"};
+	
+	$http.get("http://localhost:8181/CollabarationBackend/getAllBlogs")
+	.then(function(response)
 	{
-	$scope.blog={blogId:' ',blogName:'',blogContent:'',userId:'',createDate:'',status:'',likes:''};
-	$scope.blogdata;
+		$scope.blogdata=response.data;
+	});
 	
-	function fetchAllBlog()
-	{
-		console.log('Fetching all blogs');
-		$http.get("http://localhost:8181/Collabaration/getAllBlogs")
-		.then(function(response)
-		{
-			$scope.blogdata=response.data;
-			
-		});
-	}
-	
-	
-	fetchAllBlog();
 	$scope.insertBlog=function()
 	{
-		console.log('Inserted the blog');
-		$http.post('http://localhost:8181/Collabaration/insertBlog',$scope.blog)
+		console.log('Entered into InsertBlog');
+		$http.post('http://localhost:8181/CollabarationBackend/insertBlog',$scope.blog)
 		.then(function(response)
-		{
-			console.log('Successfully Blog inserted');
-			$location.path("/Forum");
-		});
+				{
+				console.log('Successful Blog Entered');
+				});
 	}
-	}	
-);
+	
+	
+});
+
+
+
+
+
+
+
+
+
+
+
