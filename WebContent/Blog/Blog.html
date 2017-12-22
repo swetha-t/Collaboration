@@ -28,7 +28,7 @@
 	</tr>
 </table>
 </form>
-<table width="100%">
+<table width="100%" width="80%" border="1">
 	<tr bgcolor="orange"> 
 		<td> Blog Name </td>
 		<td> Blog Content </td>
@@ -37,6 +37,29 @@
 		<td><a href="BlogPage">{{blog.blogName}}</a></td>
 		<td>{{blog.blogContent}}</td>	
 	</tr>
+	
+	<!-- 
+	<tbody>
+				<tr data-ng-repeat="blog in blogs">
+						<td>{{blog.bid}}</td>
+					<td width="15%">{{blog.blogName}}</td>
+					<td width="70%">{{blog.blogDesc}}</td>
+					<td width="10%">
+	<div class="btn-group  btn-group-justified ">
+							<sec:authorize access="isAuthenticated()">
+							<div data-ng-if="accessBlog(blog.b_userid)">
+								<a class="btn btn-primary btn-xs"
+									data-ng-click="deleteBlog(blog.bid)">Delete</a>
+
+								<a class="btn btn-primary btn-xs"
+									data-ng-click="editBlog(blog.bid)">Edit</a>
+							</div>
+							</sec:authorize>
+						</div>
+				</td>
+				<td width="5%"><a href="blog/{{blog.bid}}" class="btn btn-primary btn-xs">View</a></td>
+				</tr>
+</tbody> -->
 </table>
 
 </div>
