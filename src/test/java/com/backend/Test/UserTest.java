@@ -1,4 +1,4 @@
-
+/*
 package com.backend.Test;
 
 import static org.junit.Assert.*;
@@ -16,7 +16,7 @@ import com.backend.config.DbConfig;
 import com.backend.model.Blog;
 import com.backend.model.Forum;
 import com.backend.model.Job;
-import com.backend.model.UserDetail;
+import com.backend.model.UsersDetails;
 
 
 @ComponentScan("com.backend")
@@ -39,24 +39,24 @@ static UserDAO  userDAO;
 	@Test
 	public void addUserTest()
 	{
-		UserDetail user=new UserDetail();
+		UsersDetails user=new UsersDetails();
 		user.setUserId(14);
 		user.setFirstName("John");
 		user.setLastName("abraham");
-		user.setEmailId("john14@gmail.com");
+		user.setEmail("john14@gmail.com");
 		user.setPassword("1230");
 		user.setRole("Admin");
-		user.setStatus("P");
-		user.setIsOnline("N");
-		assertTrue("Problem in Inserting user", userDAO.addUser(user));
+		
+		user.setOnline("N");
+		assertTrue("Problem in Inserting user", userDAO.saveUser(user));
 
 	}
 
 	@Test
 	public void getAllUserTest(){
-		List<UserDetail> userList=(List<UserDetail>)userDAO.getAllUserDetails();
+		List<UsersDetails> userList=(List<UsersDetails>)userDAO.getAllUserDetails();
 		assertNotNull("Job list not found ",userList.get(0));
-		for(UserDetail user:userList)
+		for(UsersDetails user:userList)
 		{
 			System.out.println("EmailID:"+ user.getEmailId() + "Status:"+ user.getStatus());
 		}
@@ -65,11 +65,11 @@ static UserDAO  userDAO;
 		@Test
 		public void isOnlineTest()
 		{
-			UserDetail user=(UserDetail)userDAO.getUser("swetha");
+			UsersDetails user=(UsersDetails)userDAO.getUser("swetha");
 			assertTrue("Problem in updating",userDAO.updateOnlineStatus("N", user));
 		
 		
-		/*@Transactional
+		@Transactional
 		@Test
 		public void getUserDetailTest(){
 
@@ -79,7 +79,8 @@ static UserDAO  userDAO;
 			System.out.println("UserRole:" + user.getRole());
 			
 			assertNotNull("UserDetail not found", user);
-		}*/
+		}
 	}
 	
 }
+*/

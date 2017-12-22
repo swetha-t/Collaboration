@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.backend.model.Forum;
-import com.backend.model.UserDetail;
+import com.backend.model.UsersDetails;
 
 @Repository("UserDAO")
 public class UserDAOImpl implements UserDAO {
@@ -26,86 +26,86 @@ public class UserDAOImpl implements UserDAO {
 		this.sessionFactory=sessionFactory;
 	}
 
+@Transactional
+	public boolean saveUser(UsersDetails user) {
+		try{
+			Session session = sessionFactory.getCurrentSession();
+			user.setEnabled(true);
+			user.setOnline(false);
+			session.save(user);
+			return true;
+		}catch(Exception e){
+			return false;
+		}
+	}
 
-		
+@Transactional
+	public boolean updateUser(UsersDetails user) {
+		try{
+			Session session = sessionFactory.getCurrentSession();
+			session.update(user);
+			return true;
+		}catch(Exception e){
+			return false;
+		}
+	}
+
 	@Transactional
-	public boolean updateOnlineStatus(String status, UserDetail user) {
+	public boolean deleteUser(int id) {
 		try
 		{
-			user.setIsOnline(status);
-		sessionFactory.getCurrentSession().save(user);
-		return true;
+			Session session = sessionFactory.getCurrentSession();
+			UsersDetails user = session.get(UsersDetails.class, id);
+			session.delete(user);
+			return true;
+			
+		}catch(Exception e){
+			
+			System.out.println("Exception raised: "+e);
+			return false;
 		}
-		catch(Exception e)
-		{
-		System.out.println("Exception occured:" +e);
+	}
+
+	@Transactional
+	public UsersDetails getUserById(int userId) {
+		String queryString = "from UsersDetails where c_user_id = :userId";
+		UsersDetails userObj = (UsersDetails) sessionFactory.getCurrentSession().createQuery(queryString).setParameter("userId",userId).uniqueResult();
+		return userObj;
+	}
+
+	@Transactional
+	public UsersDetails getUserByEmail(String email) {
+		String queryString = "from UsersDetails where email = :email";
+		UsersDetails userObj = (UsersDetails) sessionFactory.getCurrentSession().createQuery(queryString).setParameter("email",email).uniqueResult();
+		return userObj;
+	}
+
+	@Transactional
+	public UsersDetails getUserByName(String name) {
+		String queryString = "from UsersDetails where username = :name";
+		UsersDetails userObj = (UsersDetails) sessionFactory.getCurrentSession().createQuery(queryString).setParameter("name",name).uniqueResult();
+		return userObj;
+	}
+
+	@Transactional
+	public List<UsersDetails> getAllUsers() {
+		String queryString = "from UsersDetails";
+		List<UsersDetails> userList = sessionFactory.getCurrentSession().createQuery(queryString).list();
+		return userList;
+	}
+
+	@Transactional
+	public boolean checkIfExistingUser(UsersDetails user) {
+		// TODO Auto-generated method stub
 		return false;
-		}	
 	}
 
-
-	
-	public List<UserDetail> getAllUserDetails() {
-		Session session=sessionFactory.openSession();
-		 List<UserDetail> user=(List<UserDetail>)session.createQuery("from UserDetail").list();
-			session.close();
-			return user;
+	@Transactional
+	public boolean checkIfValidUser(String username, String password) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
-@Transactional
-	public UserDetail getUserDetails(String username) {
-		Session session=sessionFactory.openSession();
-		UserDetail user=(UserDetail)session.get(UserDetail.class,username);
-		session.close();
-		return user;
-	}
-
-
-@Transactional
-public boolean addUser(UserDetail user) {
-	try
-	{
-	sessionFactory.getCurrentSession().save(user);
-	return true;
-	}
-	catch(Exception e)
-	{
-	System.out.println("Exception occured:" +e);
-	return false;
-	}	
-}
-
-
-
-public UserDetail getUser(String username) {
-	Session session=sessionFactory.openSession();
-	UserDetail user=(UserDetail)session.get(UserDetail.class,username);
-	session.close();
-	return user;
-}
-
-
-
-public UserDetail getByEmail(String emailId) {
-return(UserDetail)sessionFactory.getCurrentSession().get(UserDetail.class,emailId );
-}
-
-
-
-public boolean delete(String emailId) {
-	try
-	{
-	sessionFactory.getCurrentSession().delete(getByEmail(emailId));
-	return true;
-	}
-	catch(Exception e)
-	{
-	System.out.println("Exception occured:" +e);
-	return false;
-	}	
-}
-
-	
 
 
 }

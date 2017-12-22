@@ -3,17 +3,26 @@ package com.backend.DAO;
 import java.util.List;
 
 import com.backend.model.Forum;
-import com.backend.model.UserDetail;
+import com.backend.model.UsersDetails;
 
 public interface UserDAO {
 	
-	public boolean addUser(UserDetail user);
-	public boolean updateOnlineStatus(String status, UserDetail user);
-
-	public List<UserDetail> getAllUserDetails();
-	public UserDetail getUser(String username);
-	public UserDetail getByEmail(String emailId);
-	public boolean delete(String emailId);
+public boolean saveUser(UsersDetails user);
 	
+	public boolean updateUser(UsersDetails user);
+	
+	public boolean deleteUser(int id);
+	
+	public UsersDetails getUserById(int userId);
+	
+	public UsersDetails getUserByEmail(String email);
+	
+	public UsersDetails getUserByName(String name);
+	
+	public List<UsersDetails> getAllUsers();
+
+	public boolean checkIfExistingUser(UsersDetails user);
+
+	public boolean checkIfValidUser(String username, String password);
 
 }
