@@ -17,49 +17,7 @@ public class BlogController {
 
 	@Autowired 
 	BlogDAO blogDAO;
-	/*@Autowired
-	BlogService blogService;
 	
-	@RequestMapping(value="/createBlog",method=RequestMethod.POST)
-	public ResponseEntity<?> createBlog(@RequestBody Blog blog,HttpSession session){
-		
-		Integer userId = (Integer) session.getAttribute("userId");
-		 if(userId==null)
-		    {
-		    	return new ResponseEntity<String>("User session details not found",HttpStatus.UNAUTHORIZED);
-
-			}	   
-		    else	
-		    {
-				UsersDetails user = userService.getUserById(userId);
-				
-				if(user.isOnline()){
-					blog.setUserId(user.getUserId());
-					blog.setUserName(user.getUserName());
-					blog.setStatus("PENDING");
-					blog.setCreateDate(new Date());
-					blog.setLikes(0);
-					if(blogService.addBlog(blog)){
-						return new ResponseEntity<Blog>(blog, HttpStatus.OK);
-					}else{
-						return new ResponseEntity<String>(new String (null, 11,userId, "Blog Creation failed"), HttpStatus.INTERNAL_SERVER_ERROR);
-					}
-				}
-				return new ResponseEntity<String>("User must be logged in to create blog",HttpStatus.CONFLICT);
-			}
-	
-	@RequestMapping(value="/viewBlogs",method=RequestMethod.GET)
-	public ResponseEntity<?> viewBlogs(){
-		List<Blog> blogList = blogService.getAllApprovedBlog();
-		if(blogList!=null){
-				return new ResponseEntity<List<Blog>>(blogList, HttpStatus.OK);
-		}
-		else
-		{
-				return new ResponseEntity<String>("Retrieving Blog details failed", HttpStatus.INTERNAL_SERVER_ERROR);
-		}
-	}
-	*/
 	@PostMapping(value="/insertBlog")
 	public ResponseEntity<String> insertBlog(@RequestBody Blog blog)
 	{
