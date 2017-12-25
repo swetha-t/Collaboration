@@ -8,8 +8,8 @@ myapp.controller("forumController", function($scope, $http, $location) {
 			console.log("data fetched or forum");
 		});
 
-	}
-	;
+
+	
 	fetchAllForum();
 	$scope.insertForum = function() {
 		console.log('entered insertForum');
@@ -22,7 +22,7 @@ myapp.controller("forumController", function($scope, $http, $location) {
 	$scope.deleteForum=function(forumId)
 	{
 		console.log("forum deleted");
-		$http.get("http://localhost:8181/CollabarationBackend/deleteForum/"+forumId)
+		$http.get("http://localhost:8181/Collabaration/deleteForum/"+forumId)
 		.success(fetchAllForum(),function(response){
 			console.log('successful deletion');
 			$scope.refresh();

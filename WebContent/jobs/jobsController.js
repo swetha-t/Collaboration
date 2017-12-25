@@ -1,4 +1,4 @@
-myapp.controller("jobsController", function($scope, $http, $location) {
+myapp.controller("jobsController", function($scope, $http, $location,$rootScope) {
 	function fetchAllJobs() {
 		console.log("fetched all jobs")
 		$http.get("http://localhost:8181/Collabaration/getAllJobs")
@@ -7,8 +7,7 @@ myapp.controller("jobsController", function($scope, $http, $location) {
 			$scope.jobsdata = response.data;
 			console.log("all jobs fetched")
 		});
-	}
-	;
+	};
 	fetchAllJobs();
 	$scope.insertJobs = function() {
 		console.log('entered insertJobs');
