@@ -10,8 +10,9 @@ import javax.persistence.Table;
 @Entity
 @Table
 public class Blog {
+	
 	@Id
-
+	@GeneratedValue
 	int blogId;
 	String blogName;
 	String blogContent;

@@ -31,7 +31,7 @@ public class UserDAOImpl implements UserDAO {
 		try{
 			Session session = sessionFactory.getCurrentSession();
 			user.setEnabled(true);
-			user.setOnline(false);
+			user.setOnline(true);
 			session.save(user);
 			return true;
 		}catch(Exception e){

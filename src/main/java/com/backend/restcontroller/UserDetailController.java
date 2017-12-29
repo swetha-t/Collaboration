@@ -44,7 +44,7 @@ public class UserDetailController {
 		}
 	}
 	@PostMapping("/login")
-	public ResponseEntity<UsersDetails> loginStatus(@RequestBody UsersDetails userDetail)
+	public ResponseEntity<?> loginStatus(@RequestBody UsersDetails userDetail)
 	{
 		userDetail=userDAO.getUserByEmail(userDetail.getEmail());
 		if((userDetail==null))
