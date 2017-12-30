@@ -1,33 +1,31 @@
-myapp.controller("forumController", function($scope, $http, $location) {
-	function fetchAllForum() {
-		console.log("fetching all forum");
-		$http.get("http://localhost:8181/Collabaration/getAllForums")
+	myapp.controller("forumController",function($scope,$http,$location,$rootScope)
+		
+		{
+		$scope.forum={forumId:'',forumName:'',forumContent:'',createDate:'',userId:'',status:"NA"}
+		$scope.forum;
 
-		.then(function(response) {
-			$scope.forumdata = response.data;
-			console.log("data fetched or forum");
-		});
-
-
-	
-	fetchAllForum();
-	$scope.insertForum = function() {
-		console.log('entered insertForum');
-		$http.post('http://localhost:8181/Collabaration/insertForum',
-				$scope.forum).then(fetchAllForum(), function(response) {
-			console.log("successful forum entered");
-			$location.path("/forum")
-		});
-	}
-	$scope.deleteForum=function(forumId)
+		
+		
+	var BASE_URL="http://localhost:8181/Collabaration"
+	$scope.insertForum=function()
 	{
-		console.log("forum deleted");
-		$http.get("http://localhost:8181/Collabaration/deleteForum/"+forumId)
-		.success(fetchAllForum(),function(response){
-			console.log('successful deletion');
-			$scope.refresh();
-			$location.path("/forum");
-		});
-	};
+		console.log('Entered into InsertForum');
+		$http.post(BASE_URL+"/insertForum", $scope.forum).then(function(response)
+				{
+				console.log('Successful Forum Entered');
+				});
+	}
+
+
 	
 });
+
+
+
+
+
+
+
+
+
+

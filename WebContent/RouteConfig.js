@@ -1,35 +1,38 @@
-
-var myapp=angular.module("myApp",['ngRoute']);
+var myapp=angular.module("myApp",["ngRoute"]);
 myapp.config(function($routeProvider) {
     $routeProvider
       .when("#/",{templateUrl:"index.html"})
       
       .when("#/",{templateUrl:"home.html", 
-    	  controller:"mainController"})
-      }
+    	  controller:'mainController'
+    		  })
+      
       
       .when("/Blog",{
     	  templateUrl:"Blog/Blog.html",
-    	  controller:'BlogController.js'
+    	  controller:"BlogController.js"
     		  })
       
        .when("/Forum",{
-    	   templateUrl:"Forum/forum.html"
-    		   controller:'forumController.js'   
+    	   templateUrl:"Forum/forum.html",
+    		   controller:"forumController.js"  
        })
        
-        .when("/adminBlog",{templateUrl:"Blog/adminBlog.html"})
+        .when("/adminBlog",{
+        	templateUrl:"Blog/adminBlog.html",
+        	controller:"adminBlogController"
+        })
         
          .when("/jobs",{
         	 templateUrl:"jobs/jobs.html",
-        	 controller:'jobsController.js'
+        	 controller:"jobsController.js"
         		 })
          
     .when("/login",{
     	
     
     	templateUrl:"User/login.html",
-    	controller:'userController'
+    	controller:"userController"
     		
     })
     
@@ -37,16 +40,10 @@ myapp.config(function($routeProvider) {
      .when("/registration",{
     	 
     	 templateUrl:"User/registration.html",
-    	 controller:'userController'
+    	 controller:"userController"
      
      	})
      	
-     	s
-      .when("/friend",{templateUrl:"friend/friend.html"})
+     	
+     });
 
-});
-
-
-/*app.controller("mainController", function($scope) {
-	$scope.message = "This is home page";
-});*/

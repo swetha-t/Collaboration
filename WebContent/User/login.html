@@ -1,4 +1,4 @@
-<div class="jumbotron text-center">
+<div class="jumbotron text-center"  data-ng-controller="userController">
 	<h1>Login Page</h1>
 	
 	<p>{{ message }}</p>
@@ -12,15 +12,21 @@
       <section class="login-form">
         <form method="post" action="#" role="login">
           <img src="http://i.imgur.com/RcmcLv4.png" class="img-responsive" alt="" />
-          <input type="email" name="email" placeholder="Email" required class="form-control input-lg"  />
           
-          <input type="password" class="form-control input-lg" id="password" placeholder="Password" required="" />
+         <input type="email" class="form-control" name="userName" placeholder="Email Address" required="" autofocus="" data-ng-model="user.userName"/>
+         <input type="password" class="form-control" name="password" placeholder="Password" required="" data-ng-model="user.password" />     
+         
+          
+              <div class="pwstrength_viewport_progress"></div>
+              
+          <label class="checkbox">
+        <input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe"> Remember me
+      </label>
+      <button class="btn btn-lg btn-primary btn-block" type="submit" data-ng-click="login()">Login</button>   
+      
+       
           
           
-          <div class="pwstrength_viewport_progress"></div>
-          
-          
-          <button type="submit" name="go" class="btn btn-lg btn-primary btn-block">Sign in</button>
           <div>
             <a href="#/registration">Create account</a> 
           </div>
