@@ -1,54 +1,38 @@
-
+<center>
+	<b font-size="6">Blog Page</b>
+</center>
 <div ng-controller="BlogController">
 
-<form id="blogform" method="post">
-<table align="center" width="80%" border="1">
-<tr>
-		<td>Blog Id</td>
-		<td><input type="text" name="blogId" ng-model="blog.blogId"/></td>
-	</tr>
-	<tr>
-		<td>Blog Name</td>
-		<td><input type="text" name="blogName" ng-model="blog.blogName"/></td>
-	</tr>
-	<tr>
-		<td>Blog Content</td>
-		<td><textarea cols="30" row="10" name="blogContent" ng-model="blog.blogContent"></textarea></td>
-	</tr>
-	<tr>
-		<td colspan="2"><center><input type="submit" value="Insert Blog" ng-click="insertBlog()"/></center></td>
-	</tr>
-</table>
-</form>
-	
-	 <table class="table table-striped table-bordered" style="width:80%">
-			<thead>
-			<tr bgcolor="#ffc400 ">
-				<th>S. No.</th>
-				<th>Blog Id</th>
-				<th>Blog Name</th>
-				<th>Blog Operations</th>
-			</tr>	
-			</thead>
-			<tbody>
+	<form id="blogform" data-ng-submit="insertBlog()"method="post">
+		<table align="center" width="100%" border=1>
+			<tr>
+				<td>Blog Name</td>
+				<td><input type="text" name="blogName" data-ng-model="blog.blogName"/></td>
+			</tr>
+			<tr>
+				<td>Blog Content</td>
+				<td><textarea cols="30" row="10" name="blogContent" data-ng-model="blog.blogContent" /></textarea></td>
+			</tr>
+			<tr>
+				<td colspan="2"><center><input type="submit" value="Insert Blog" ></center></td>
+		</table>
+	</form>
 
-		<tr data-ng-repeat=" blog in fetchAllBlog">
-			   		
-			   		   <td>{{blog.blogId}}</td>
-			   			<td>{{blog.blogName}}</td>
-			   			<td>{{blog.blogContent}}</td>
-			   			
-			   			</tr>
-<a class="btn btn-primary" href="editblog/${blog.blogId}"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit</a>
+<br/>
+	<div class="table-responsive">
+	<table id="myTable" class="table table-striped" >
+		<thead>
+		<tr bgcolor="hotpink">
+			<td>Blog Name</td>
+			<td>Blog Content</td>
+			<td>Operations</td>
+		</tr>
+		</thead>
+		<tr bgcolor="cyan" ng-repeat="blog in blogdata">
+			<td>{{blog.blogName}}</td>
+			<td>{{blog.blogContent}}</td>
+			<td colspan="2"><center><input type="submit" value=" Delete Blog" ng-click="deleteBlog(blog.blogId)"></center>
+		</tr>
 
-<a class="btn btn-danger"  href="removeblog/${blog.blogId}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete
-								</a>
-
-							</nobr></td>
-			   		</tr>
-			   </c:forEach>
 	</table>
-</tbody>
-</table>
-
 </div>

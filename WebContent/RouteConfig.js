@@ -1,21 +1,24 @@
-var myapp=angular.module("myApp",["ngRoute"]);
-myapp.config(function($routeProvider) {
+var app=angular.module("myApp",['ngRoute','ngCookies']);
+
+app.config(function($routeProvider, $locationProvider) {
+	$locationProvider.hashPrefix('');
     $routeProvider
+    
       .when("#/",{templateUrl:"index.html"})
       
       .when("#/",{templateUrl:"home.html", 
-    	  controller:'mainController'
+    	  controller:"mainController"
     		  })
       
       
       .when("/Blog",{
     	  templateUrl:"Blog/Blog.html",
-    	  controller:"BlogController.js"
+    	  controller:"BlogController"
     		  })
       
        .when("/Forum",{
     	   templateUrl:"Forum/forum.html",
-    		   controller:"forumController.js"  
+    		   controller:"forumController"  
        })
        
         .when("/adminBlog",{
@@ -25,13 +28,11 @@ myapp.config(function($routeProvider) {
         
          .when("/jobs",{
         	 templateUrl:"jobs/jobs.html",
-        	 controller:"jobsController.js"
+        	 controller:"jobsController"
         		 })
          
     .when("/login",{
-    	
-    
-    	templateUrl:"User/login.html",
+    	templateUrl:"user/login.html",
     	controller:"userController"
     		
     })
@@ -39,11 +40,31 @@ myapp.config(function($routeProvider) {
     
      .when("/registration",{
     	 
-    	 templateUrl:"User/registration.html",
+    	 templateUrl:"user/registration.html",
     	 controller:"userController"
      
      	})
+     	.when('/Chat', {
+     		templateUrl : 'Chat/chat.html',
+     		controller : "chatController"
+     			})
      	
      	
      });
 
+app.run(function($rootScope,$cookieStore){
+	console.log('i am in run function');
+	console.log($rootScope.currentUser);
+	if($rootScope.currentUser==undefined)
+		{
+		$rootScope.currentUser=$cookieStore.get('user');
+		}
+	else{
+		console.log($rootScope.currentUser.username);
+		console.log($rootScope.currentUser.role);
+	}
+});
+
+app.controller("mainController", function($scope) {
+	$scope.message = "This is home page";
+});

@@ -1,4 +1,4 @@
-myapp.controller("adminBlogController", function($scope, $http, $location) {
+app.controller("adminBlogController", function($scope, $http, $location) {
 	function fetchAllBlog() {
 		console.log("Fetching all blogs");
 		$http.get("http://localhost:8181/Collabaration/getAllBlogs")
