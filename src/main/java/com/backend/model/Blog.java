@@ -19,15 +19,8 @@ public class Blog {
 	int userId;
 	String status;
 	int likes;
-	String UserName;
-	public String getUserName() {
-		return UserName;
-	}
-
-	public void setUserName(String userName) {
-		UserName = userName;
-	}
-
+	
+	
 	Date createDate;
 
 	public int getBlogId() {

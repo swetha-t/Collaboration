@@ -149,6 +149,19 @@ public List<Blog> getAllApprovedBlog() {
 	
 	return blogList;
 }
+
+
+@Transactional
+public boolean incrementLike(Blog blog) {
+	try {
+		blog.setLikes(blog.getLikes() + 1);
+		sessionFactory.getCurrentSession().update(blog);
+		return true;
+	} catch (Exception e) {
+		System.out.println("exception arised" + e);
+		return false;
+	}
+}
 	}
 
 

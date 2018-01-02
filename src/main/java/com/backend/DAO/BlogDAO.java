@@ -19,6 +19,8 @@ public boolean addBlog(Blog blog);
 	
 	public boolean rejectBlog(Blog blog);
 	
+	public boolean incrementLike(Blog blog);
+	
 	public List<Blog> getAllBlogs(int userId);
 public List<Blog> getAllPendingBlogs();
 	

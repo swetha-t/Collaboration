@@ -60,7 +60,7 @@ public class ForumController {
 	public ResponseEntity<ArrayList<Forum>> getAllForums()
 	{
 		ArrayList listForums=(ArrayList)forumDAO.getAllForums();
-		return new ResponseEntity<ArrayList<Forum>>(listForums,HttpStatus.SERVICE_UNAVAILABLE);
+		return new ResponseEntity<ArrayList<Forum>>(listForums,HttpStatus.OK);
 	}
 	
 	 @GetMapping("/deleteForum/{forumId}")

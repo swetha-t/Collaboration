@@ -3,6 +3,7 @@ package com.backend.model;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -11,6 +12,7 @@ import javax.persistence.Table;
 public class Forum {
 
 	@Id
+	@GeneratedValue
 	int forumId;
 	String forumName;
 	String forumContent;

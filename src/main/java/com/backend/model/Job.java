@@ -3,6 +3,7 @@ package com.backend.model;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -10,6 +11,7 @@ import javax.persistence.Table;
 @Table
 public class Job {
 	@Id
+	@GeneratedValue
 int jobId;
 String jobProfile,jobDesc,qualification,status;
 Date postDate;

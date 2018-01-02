@@ -1,6 +1,7 @@
 package com.backend.model;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -8,8 +9,9 @@ import javax.persistence.Table;
 @Table
 public class Friend {
 	@Id
+	@GeneratedValue
 	int friendId;
-	String friendnName;
+	String friendName;
 	String userName;
 	String status;
 	public int getFriendId() {
@@ -18,11 +20,12 @@ public class Friend {
 	public void setFriendId(int friendId) {
 		this.friendId = friendId;
 	}
-	public String getFriendnName() {
-		return friendnName;
+	
+	public String getFriendName() {
+		return friendName;
 	}
-	public void setFriendnName(String friendnName) {
-		this.friendnName = friendnName;
+	public void setFriendName(String friendName) {
+		this.friendName = friendName;
 	}
 	public String getUserName() {
 		return userName;

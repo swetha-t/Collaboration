@@ -24,12 +24,15 @@ import com.backend.DAO.FriendDAO;
 import com.backend.DAO.FriendDAOImpl;
 import com.backend.DAO.JobDAO;
 import com.backend.DAO.JobDAOImpl;
+import com.backend.DAO.ProfilePictureDAO;
+import com.backend.DAO.ProfilePictureDAOImpl;
 import com.backend.DAO.UserDAO;
 import com.backend.DAO.UserDAOImpl;
 import com.backend.model.Blog;
 import com.backend.model.Forum;
 import com.backend.model.Friend;
 import com.backend.model.Job;
+import com.backend.model.ProfilePicture;
 import com.backend.model.UsersDetails;
 
 
@@ -73,6 +76,7 @@ public class DbConfig {
 		sessionBuilder.addAnnotatedClasses(UsersDetails.class);
 		sessionBuilder.addAnnotatedClass(Job.class);
 		sessionBuilder.addAnnotatedClass(Friend.class);
+		sessionBuilder.addAnnotatedClass(ProfilePicture.class);
 	/*	sessionBuilder.addAnnotatedClasses(ForumComment.class);*/
 	/*	sessionBuilder.addAnnotatedClass(BlogComments.class);*/
 		sessionBuilder.scanPackages("com.backend");
@@ -127,6 +131,14 @@ public class DbConfig {
 	{
 		System.out.println("Friend DAO object Created");
 		return new FriendDAOImpl(sessionFactory);
+	}
+	
+	@Autowired
+	@Bean(name="profilePictureDAO")
+
+	public ProfilePictureDAO getProfilePictureDAO(SessionFactory sessionFactory) {
+		System.out.println("ProfilePicture DAO object Created");
+		return new ProfilePictureDAOImpl(sessionFactory);
 	}
 	
 	/*@Autowired

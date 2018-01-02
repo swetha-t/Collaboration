@@ -16,6 +16,25 @@ public class UsersDetails {
 	@Id
 	@GeneratedValue
 	int user_Id;
+
+	private String firstName;
+	private String lastName;
+	
+	@Column(unique=true,nullable=false)
+	private String userName;
+	private String contact;
+	
+	@Column(unique=true,nullable=false)
+	private String email;
+	private String password;
+	private String role;
+    private String status;
+	private boolean isOnline;
+	private boolean Enabled;
+	
+	@Lob
+	private byte[] image;
+
 	public int getUser_Id() {
 		return user_Id;
 	}
@@ -80,20 +99,31 @@ public class UsersDetails {
 		this.role = role;
 	}
 
-	public boolean isEnabled() {
-		return isEnabled;
+	public String getStatus() {
+		return status;
 	}
 
-	public void setEnabled(boolean isEnabled) {
-		this.isEnabled = isEnabled;
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
+
+
+	
 	public boolean isOnline() {
 		return isOnline;
 	}
 
-	public void setOnline(boolean isOnline) {
-		this.isOnline = isOnline;
+	public void setOnline(boolean b) {
+		this.isOnline = b;
+	}
+
+	public boolean isEnabled() {
+		return Enabled;
+	}
+
+	public void setEnabled(boolean enabled) {
+		Enabled = enabled;
 	}
 
 	public byte[] getImage() {
@@ -103,23 +133,8 @@ public class UsersDetails {
 	public void setImage(byte[] image) {
 		this.image = image;
 	}
-
-	private String firstName;
-	private String lastName;
 	
-	@Column(unique=true,nullable=false)
-	private String userName;
-	private String contact;
 	
-	@Column(unique=true,nullable=false)
-	private String email;
-	private String password;
-	private String role;
-	private boolean isEnabled;
-	private boolean isOnline;
-	
-	@Lob
-	private byte[] image;
 
 
 }
