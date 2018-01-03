@@ -13,6 +13,6 @@ public interface UserDAO {
 	public UsersDetails getByEmail(String email);
 	public List<UsersDetails> getAllUserDetails();
 	public UsersDetails getUserDetails(String username);
-	public boolean checkLogin (UsersDetails userDetail);
+	public boolean checkLogin(String username, String password);
 	
 }

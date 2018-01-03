@@ -3,6 +3,8 @@ package com.backend.restcontroller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -44,22 +46,37 @@ public class UserController {
 			return new ResponseEntity<String>("Error in registration",HttpStatus.SERVICE_UNAVAILABLE);
 		}
 	}
-	@PostMapping("/login")
-	public ResponseEntity<?> loginStatus(@RequestBody UsersDetails userDetail)
+	
+		@PostMapping("/login")
+		public ResponseEntity<?> loginStatus(@RequestBody UsersDetails userDetail,HttpSession session)
 	{
-		userDetail=userDAO.getByEmail(userDetail.getEmail());
-		if((userDetail==null))
-		{
-			userDetail=new UsersDetails();
-			System.out.println("user email invalid");
+			UsersDetails user=userDAO.getUserDetails(userDetail.getUsername());
+			//select * from UserDetails where username='piyush';
+			
+			boolean userExists = userDAO.checkLogin(user.getUsername(), user.getPassword());
+			
+			
+			
+			System.out.println(userDetail.getUsername());
+			
+			System.out.print(userExists);
+			
+			if (userExists) 
+			{
+				userDAO.updateOnlineStatus("Y",user);
+				session.setAttribute("username", user.getUsername());
+				return new ResponseEntity<UsersDetails>(user, HttpStatus.OK);
+			} 
+			else {
+				Error error = new Error("unable to login user details");
+				return new ResponseEntity<Error>(error, HttpStatus.INTERNAL_SERVER_ERROR);
+			}
+		
+		 
 		}
-		else
-		{
-			System.out.println("login user");
-		}
-		return new ResponseEntity<UsersDetails>(userDetail,HttpStatus.OK);
-	}
+	
 
+		
 	@GetMapping(value = "/logout/{username}")
 	public ResponseEntity<String> loggingout(@PathVariable("username") String username) {
 		UsersDetails user = userDAO.getUserDetails(username);
