@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.backend.model.Blog;
-import com.backend.model.Forum;
+
 
 @Repository("BlogDAO")
 public class BlogDAOImpl implements BlogDAO {
@@ -79,6 +79,7 @@ public class BlogDAOImpl implements BlogDAO {
 		 		return blog;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Transactional
 	public List<Blog> getAllBlogs() {
 Session session=sessionFactory.openSession();
@@ -116,6 +117,7 @@ Session session=sessionFactory.openSession();
  				}	
  			}
 
+@SuppressWarnings("unchecked")
 @Transactional
 public List<Blog> getAllBlogs(int userId) {
 	Session session = sessionFactory.openSession();
@@ -128,6 +130,7 @@ public List<Blog> getAllBlogs(int userId) {
 	return blogList;
 }
 
+@SuppressWarnings("unchecked")
 @Transactional
 public List<Blog> getAllPendingBlogs() {
 	Session session = sessionFactory.openSession();
@@ -139,6 +142,7 @@ public List<Blog> getAllPendingBlogs() {
 	return blogList;
 }
 
+@SuppressWarnings("unchecked")
 @Transactional
 public List<Blog> getAllApprovedBlog() {
 	Session session = sessionFactory.openSession();

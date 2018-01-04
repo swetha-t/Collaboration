@@ -56,6 +56,9 @@ public class UserController {
 			boolean userExists = userDAO.checkLogin(user.getUsername(), user.getPassword());
 			
 			
+			System.out.println(userExists);
+			
+			
 			
 			System.out.println(userDetail.getUsername());
 			
@@ -78,14 +81,35 @@ public class UserController {
 
 		
 	@GetMapping(value = "/logout/{username}")
-	public ResponseEntity<String> loggingout(@PathVariable("username") String username) {
-		UsersDetails user = userDAO.getUserDetails(username);
-		if (userDAO.updateOnlineStatus("N", user)) {
-			return new ResponseEntity<String>("Successful logout", HttpStatus.OK);
+	public ResponseEntity<String> loggingout(@PathVariable("username") String username,HttpSession session) {
+		
+		
+		UsersDetails user=userDAO.getUserDetails(username);
+		//select * from UserDetails where username='piyush';
+		
+		boolean userExists = userDAO.checkLogin(user.getUsername(), user.getPassword());
+		
+		
+		System.out.println(userExists);
+		
+		
+		
+		System.out.println(username);
+		
+		System.out.print(userExists);
+		
+		if (userExists) 
+		{
+			userDAO.updateOnlineStatus("N",user);
+			session.removeAttribute("username");
+			return new ResponseEntity<String>("Logout succesfully", HttpStatus.OK);
 		} 
 		else {
-			return new ResponseEntity<String>("error in logout", HttpStatus.SERVICE_UNAVAILABLE);
+			Error error = new Error("unable to login user details");
+			return new ResponseEntity<String>("Unable to logout", HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	
+	 
 	}
+
 }
