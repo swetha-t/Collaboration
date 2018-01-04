@@ -3,13 +3,13 @@
 app.controller("BlogController",function($scope,$http,$location,$rootScope)
 		
 		{
-		$scope.blog={blogId:" ",blogName:" ",blogContent:" ",createDate:"",likes:0,username:"",status:"NA"}
+		$scope.blog={blogId:" ",blogName:" ",blogContent:" ",createDate:"",likes:0,username:"",status:"A"}
 		$scope.blog;
 
 		function fetchAllBlog()
 		{
 		console.log('Fetching all blogs');
-		$http.get("http://localhost:8181/Collabaration/getAllBlogs")
+		$http.get('http://localhost:8181/Collabaration/getAllBlogs')
 		.then(function(response)
 		{
 			$scope.blogdata=response.data;
@@ -17,9 +17,8 @@ app.controller("BlogController",function($scope,$http,$location,$rootScope)
 
 		
 		}
-	
-		
-		
+
+		fetchAllBlog();		
 		var BASE_URL='http://localhost:8181/Collabaration'
 		  	$scope.insertBlog=function()
 		  	{
@@ -27,45 +26,49 @@ app.controller("BlogController",function($scope,$http,$location,$rootScope)
 		 		$http.post(BASE_URL+"/insertBlog", $scope.blog).then(function(response)
 		  				{
 		  				console.log('Successful Blog Entered');
+		  				$location.path("/Blog");
 		  				});
 		  	}
 		
+		$scope.deleteBlog=function(blogId)
+		{
+			console.log('Entering to Delete Blog');
+			$http.get('http://localhost:8181/Collabaration/deleteBlog/'+blogId)
+			.success(fetchAllBlog(),function(response)
+					{
+					console.log('Successful Deletion');
+					$scope.refresh();
+					$location.path("/Blog");
+					});
+		};
 		
+		$scope.editBlog=function(blogId)
+		{
+			console.log('Entering to the edit Blog');
+			$http.get('http://localhost:8181/Collabaration/editBlog/'+blogId)
+			.success(fetchAllBlog(),function(response)
+					{
+					console.log('Editing');
+					$scope.blog=response.data;
+					console.log($scope.blog);
+					$location.path("/Blog");
+					});	
+		};
 		
+		$scope.incrementLike=function(blogId)
+		{
+			console.log('Entering Increment Like');
+			$http.get('http://localhost:8181/Collabaration/incLike/'+blogId)
+			.success(fetchAllBlog(),function(response)
+					{
+					console.log('Blog Like Incremented');
+					$location.path("/Blog");
+					});
+		}
 		
+	
 
-	var BASE_URL="http://localhost:8181/Collabaration"
-		$scope.updateBlog=function()
-		{
-			console.log('Entered into UpdateBlog');
-			$http.post(BASE_URL+"/updateBlog", $scope.blog).then(function(response)
-					{
-					console.log('Successful Blog updated');
-					});
-		}
 	
-	
-	var BASE_URL="http://localhost:8181/Collabaration"
-		$scope.deleteBlog=function()
-		{
-			console.log('Entered into DeleteBlog');
-			$http.post(BASE_URL+"/deleteBlog", $scope.blog).then(function(response)
-					{
-					console.log('Successful Blog deleted');
-					});
-		}
-	
-	$scope.likeBlog=function(blogId)
-	{
-		console.log("enterd into like ");
-		$http.get('http://localhost:8181/Collabaration/incLike/'+ blogId)
-		.success(fetchAllBlog(),function(response)
-				{
-				console.log("like incremented")
-				$scope.refresh();
-				$location.path("/blog");
-				});
-};
 });
 
 

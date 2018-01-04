@@ -1,4 +1,4 @@
-app.controller("jobsController", function($scope, $http, $location,$rootScope)
+app.controller("addjobsController", function($scope, $http, $location,$rootScope)
 		{
 	$scope.job={jobid:0,jobName:'',jobDesc:'',postedDate:'',lastDate:'',salary:0};
 	$scope.listJobs;

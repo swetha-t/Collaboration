@@ -5,7 +5,7 @@
 
 		.then(function(response) {
 			$scope.forumdata = response.data;
-			console.log("data fetched or forum");
+			console.log("data fetched from forum");
 		});
 
 	}
@@ -16,7 +16,7 @@
 		$http.post('http://localhost:8181/Collabaration/insertForum',
 				$scope.forum).then(fetchAllForum(), function(response) {
 			console.log("successful forum entered");
-			$location.path("/forum")
+			/*$location.path("/forum")*/
 		});
 	}
 	$scope.deleteForum=function(forumId)
@@ -26,7 +26,7 @@
 		.success(fetchAllForum(),function(response){
 			console.log('successful deletion');
 			$scope.refresh();
-			$location.path("/forum");
+	/*		$location.path("/forum");*/
 		});
 	};
 	

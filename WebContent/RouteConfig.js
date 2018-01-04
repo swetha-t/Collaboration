@@ -6,8 +6,9 @@ app.config(function($routeProvider, $locationProvider) {
     
       .when("#/",{templateUrl:"index.html"})
       
-      .when("#/",{templateUrl:"home.html", 
-    	  controller:"mainController"
+      .when("/home",{
+    	  templateUrl:"home.html", 
+    	  
     		  })
       
       
@@ -16,8 +17,8 @@ app.config(function($routeProvider, $locationProvider) {
     	  controller:"BlogController"
     		  })
       
-       .when("/Forum",{
-    	   templateUrl:"Forum/forum.html",
+       .when("/forum",{
+    	   templateUrl:"forum/forum.html",
     		   controller:"forumController"  
        })
        
@@ -30,13 +31,23 @@ app.config(function($routeProvider, $locationProvider) {
         	 templateUrl:"jobs/jobs.html",
         	 controller:"jobsController"
         		 })
+        		 
+         .when("/jobs",{
+        	 templateUrl:"jobs/addjobs.html",
+        	 controller:"addjobsController"
+        		 })		 
+         
          
     .when("/login",{
     	templateUrl:"user/login.html",
-    	controller:"userController"
+    	controller:"UserController"
     		
     })
     
+     .when("/Friend",{
+    	 templateUrl:"user/Friend.html",
+    	 controller:"userController"
+     })
     
      .when("/registration",{
     	 
@@ -44,9 +55,14 @@ app.config(function($routeProvider, $locationProvider) {
     	 controller:"userController"
      
      	})
+     	
+     	 .when("/FriendRequest",{
+     		 templateUrl:"Friend/ShowFriendRequest.html",
+     		 controller:"FriendController"
+     	 })
      	.when('/Chat', {
-     		templateUrl : 'Chat/chat.html',
-     		controller : "chatController"
+     		templateUrl : 'Chat/Chat.html',
+     		controller : "ChatController"
      			})
      	
      	
@@ -57,13 +73,14 @@ app.run(function($rootScope,$cookieStore){
 	console.log($rootScope.currentUser);
 	if($rootScope.currentUser==undefined)
 		{
-		$rootScope.currentUser=$cookieStore.get('user');
+		$rootScope.currentUser=$cookieStore.get('userDetails');
 		}
 	else{
 		console.log($rootScope.currentUser.username);
 		console.log($rootScope.currentUser.role);
 	}
 });
+
 
 app.controller("mainController", function($scope) {
 	$scope.message = "This is home page";

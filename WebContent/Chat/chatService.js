@@ -1,7 +1,7 @@
-app.service('chatService', function($q , $timeout)
+app.factory('chatService', function($q , $timeout)
 {
 
-	var base_url="http://localhost:8090/SocialNetworkAppRest";
+	var base_url="http://localhost:8181/Collabaration";
 	
 	var service={},listener=$q.defer(),socket={client:null,stomp:null},messageIds=[];
 
@@ -51,6 +51,7 @@ app.service('chatService', function($q , $timeout)
 		socket.client=new SockJS(service.SOCKET_URL);
 		socket.stomp=Stomp.over(socket.client);
 		socket.stomp.connect({},startListener);
+		console.log('Initialization');
 		socket.stomp.onclose=reconnect;
 	};
 

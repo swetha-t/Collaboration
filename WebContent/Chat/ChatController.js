@@ -1,4 +1,4 @@
-app.controller('chatController', function($scope,$rootScope,chatService)
+app.controller("ChatController", function($scope,$rootScope,chatService)
 {
 	$scope.messages=[];
 	$scope.message="";
@@ -6,6 +6,7 @@ app.controller('chatController', function($scope,$rootScope,chatService)
 	
 	$scope.addMessage=function()
 	{
+		console.log('Add Message Called');
 		chatService.send($rootScope.currentUser.username+":" +$scope.message);
 		$scope.message="";
 	};

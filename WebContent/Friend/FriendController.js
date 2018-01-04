@@ -1,4 +1,4 @@
-app.controller("friendController", function($scope, $http, $location,$rootScope) 
+app.controller("FriendController", function($scope, $http, $location,$rootScope) 
 	{
 		$scope.friend={friendId:0,username:'',friendname:'',status:''};
 		$scope.allFriendRequest;

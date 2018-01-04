@@ -1,14 +1,16 @@
 app.controller("adminBlogController", function($scope, $http, $location) {
+	$scope.blog={blogId:0,blogName:'',blogContent:'',createDate:'',likes:0,username:'',status:'A'};
+	$scope.blogdata;
 	function fetchAllBlog() {
-		console.log("Fetching all blogs");
+		console.log("Fetching all blogs Admin");
 		$http.get("http://localhost:8181/Collabaration/getAllBlogs")
 
 		.then(function(response) {
 			$scope.blogdata = response.data;
 			console.log("Blog fetched");
 		});
-	}
-	;
+	}	;
+	
 	fetchAllBlog();
 	$scope.approveBlog=function(blogId) 
 	{

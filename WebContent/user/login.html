@@ -1,52 +1,22 @@
-<div class="jumbotron text-center"  data-ng-controller="userController">
-	<h1>Login Page</h1>
-	
-	<p>{{ message }}</p>
-</div>
-<div class="container">
-  
-  <div class="row" id="pwd-container">
-    <div class="col-md-4"></div>
-    
-    <div class="col-md-4">
-      <section class="login-form">
-        <form method="post" action="#" role="login">
-          <img src="http://i.imgur.com/RcmcLv4.png" class="img-responsive" alt="" />
-          
-         <input type="email" class="form-control" name="userName" placeholder="Email Address" required="" autofocus="" data-ng-model="user.userName"/>
-         <input type="password" class="form-control" name="password" placeholder="Password" required="" data-ng-model="user.password" />     
-         
-          
-              <div class="pwstrength_viewport_progress"></div>
-              
-          <label class="checkbox">
-        <input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe"> Remember me
-      </label>
-      <button class="btn btn-lg btn-primary btn-block" type="submit" data-ng-click="login()">Login</button>   
-      
-       
-          
-          
-          <div>
-            <a href="#/registration">Create account</a> 
-          </div>
-          
-        </form>
-        
-        
-      </section>  
-      </div>
-      
-      <div class="col-md-4"></div>
-      
-
-  </div>
-  
-  <p>
-    <br>
-    <br>
-    
-  </p>     
-  
-  
+<div data-ng-controller="UserController">
+		<form id="Users">
+			<table align="center" border="1">
+					<tr>
+						<td colspan="2"><center> Sign In </center></td>
+					</tr>
+					<tr>
+						<td>User Name</td>
+						<td><input type="text" ng-model="user.username"/></td>
+					</tr>
+					<tr>
+						<td>Password</td>
+						<td><input type="password" ng-model="user.password"/></td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							<input type="submit" value="Login" ng-click="login()"/>
+						</td>
+					</tr>
+			</table>
+		</form>
 </div>
