@@ -40,21 +40,21 @@ app.controller("UserController", function($scope, $http, $location,$rootScope,$c
 		});
 	}
 	
-/*	
+
 	fetchAllUsers();
 			
 	$rootScope.logout=function()
 	{
 		console.log('logout function');
 		delete $rootScope.currentUser;
-		$cookieStore.remove('currentUser',response.data);
+		$cookieStore.remove('currentUser');
 		$location.path("/logout");
 	}
-	*/
 	
-	fetchAllUsers();
 	
-	$http.get("http://localhost:8181/Collabaration/logout",$scope.username)
+	/*fetchAllUsers();
+	
+	$http.get("http://localhost:8181/Collabaration/logout/userName")
 	.then(function(response){
 
 		console.log('logout function');
@@ -65,9 +65,9 @@ app.controller("UserController", function($scope, $http, $location,$rootScope,$c
 		
 		delete $rootScope.currentUser;
 		$cookieStore.remove('currentUser',response.data);
+		console.log($rootScope.currentUser.role);
 		$location.path("/logout");
-	})
-
+	})*/
 	});
 
 
