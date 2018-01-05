@@ -16,12 +16,15 @@ app.controller("adminBlogController", function($scope, $http, $location) {
 	{
 		console.log("entered in approve blog");
 		$http.get('http://localhost:8181/Collabaration/approveBlog/'+ blogId)
-				.then(fetchAllBlog(), function(response) 
+				.then(fetchAllBlog(), 
+						function(response) 
 		{
 			console.log("Blog is approved");
 		}
 		)
 	}
+	
+	
 	$scope.rejectBlog=function(blogId)
 	{
 	$http.get('http://localhost:8181/Collabaration/rejectBlog/'+blogId)

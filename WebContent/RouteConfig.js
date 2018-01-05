@@ -12,10 +12,16 @@ app.config(function($routeProvider, $locationProvider) {
     		  })
       
       
-      .when("/Blog",{
+      .when("/postblog",{
     	  templateUrl:"Blog/Blog.html",
     	  controller:"BlogController"
     		  })
+    		  
+      .when("/viewblog",{
+    	  templateUrl:"Blog/ViewBlog.html",
+    	  controller:"BlogController"
+    		  })
+    		  
       
        .when("/forum",{
     	   templateUrl:"forum/forum.html",
@@ -34,7 +40,7 @@ app.config(function($routeProvider, $locationProvider) {
         		 
          .when("/jobs",{
         	 templateUrl:"jobs/addjobs.html",
-        	 controller:"addjobsController"
+        	 controller:"jobsController"
         		 })		 
          
          

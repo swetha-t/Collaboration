@@ -1,4 +1,5 @@
 	app.controller("forumController", function($scope, $http, $location) {
+		
 	function fetchAllForum() {
 		console.log("fetching all forum");
 		$http.get("http://localhost:8181/Collabaration/getAllForums")
