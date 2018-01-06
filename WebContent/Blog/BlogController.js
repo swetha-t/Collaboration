@@ -7,7 +7,7 @@ app.controller("BlogController",function($scope,$http,$location,$rootScope)
 		$scope.blog;
 */
 	function fetchAllBlog() {
-		console.log("fetching all forum");
+		console.log("fetching all blog");
 		$http.get("http://localhost:8181/Collabaration/getAllBlogs")
 
 		.then(function(response) {

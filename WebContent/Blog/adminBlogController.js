@@ -1,17 +1,20 @@
 app.controller("adminBlogController", function($scope, $http, $location) {
 	$scope.blog={blogId:0,blogName:'',blogContent:'',createDate:'',likes:0,username:'',status:'A'};
 	$scope.blogdata;
+
+	
 	function fetchAllBlog() {
-		console.log("Fetching all blogs Admin");
+		console.log("fetching all Admin Blogs");
 		$http.get("http://localhost:8181/Collabaration/getAllBlogs")
 
 		.then(function(response) {
 			$scope.blogdata = response.data;
-			console.log("Blog fetched");
+			console.log("data fetched from Admin blog");
 		});
-	}	;
+
+	};
 	
-	fetchAllBlog();
+   fetchAllBlog();
 	$scope.approveBlog=function(blogId) 
 	{
 		console.log("entered in approve blog");
@@ -20,9 +23,9 @@ app.controller("adminBlogController", function($scope, $http, $location) {
 						function(response) 
 		{
 			console.log("Blog is approved");
-		}
-		)
+		})
 	}
+	
 	
 	
 	$scope.rejectBlog=function(blogId)

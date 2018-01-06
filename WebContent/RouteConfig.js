@@ -38,8 +38,8 @@ app.config(function($routeProvider, $locationProvider) {
         	 controller:"jobsController"
         		 })
         		 
-         .when("/jobs",{
-        	 templateUrl:"jobs/addjobs.html",
+         .when("/showjobs",{
+        	 templateUrl:"jobs/Showjobs.html",
         	 controller:"jobsController"
         		 })		 
          
