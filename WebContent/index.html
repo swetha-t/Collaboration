@@ -11,18 +11,18 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.1/sockjs.min.js"></script>
 	
 <script src="RouteConfig.js"></script>
-<!-- <script src="user/userService.js"></script> -->
+
 <script src="user/userController.js"></script>
 <script src="Blog/BlogController.js"></script>
 <script src="forum/forumController.js"></script>
 <script src="jobs/jobsController.js"></script>
-
 <script src="Blog/adminBlogController.js"></script>
+<script src="forum/adminForumController.js"></script>
  <script src="Friend/FriendController.js"></script>
 <script src="Chat/ChatController.js"></script>
 <script src="Chat/chatService.js"></script>
 <!-- <script src="pages/mainController.js"></script> -->
-<!-- <script src="Forum/adminForumController.js"></script>  -->
+
 
 
 
@@ -51,14 +51,18 @@
           <li><a href="#/postblog" data-ng-show="currentUser.role=='user'">Create Blog</a></li>
                <li><a href="#/viewblog">Show Blog</a></li>
       
-          
-         <li><a href="#/adminBlog" data-ng-show="currentUser.role=='admin'"> Blog</a></li>
+        <li><a href="#/adminBlog" data-ng-show="currentUser.role=='admin'"> Blog</a></li>
         </ul>
       </li>
       
+      
+      
        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Forum<span class="caret"></span></a>
         <ul class="dropdown-menu">
-          <li><a href="#/forum" data-ng-show="currentUser.role=='user'">Show Forum</a></li>
+         <li><a href="#/postforum" data-ng-show="currentUser.role=='user'">Create Forum</a></li>
+          <li><a href="#/viewforum">Show Forum</a></li>
+          
+            <li><a href="#/adminForum" data-ng-show="currentUser.role=='admin'">Forum</a></li>
         </ul>
       </li>
       
@@ -71,16 +75,21 @@
       
       <li><a href="#/jobs" ng-show="currentUser.role=='admin'">Add Jobs</a></li>
       <li ><a href="#/showjobs"  ng-show="currentUser.role=='user'">Show Job</a></li>
+      
+      <li ><a href="#/Friend"  ng-show="currentUser.role=='user'">Friends</a></li>
+      
+      	<li ><a href="#/ShowFriendRequest" ng-show="currentUser.role=='user'"> Friend Request</a></li>
+      
     </ul>
     
       <div class="nav navbar-nav navbar-right" ng-hide="currentUser==undefined">
          <font color='white' face='calibri' size='4'>Welcome :{{currentUser.username}} &nbsp;&nbsp;&nbsp;
-<!--          <img src="http://localhost:8083/SocialCollRestController/getImage/{{currentUser.username}}" width="20" height=20"/>
- -->     
+         <img src="http://localhost:8181/Collabaration/getimage/{{currentUser.username}}" width="20" height=20"/>
+      
      
          <a href="#/ProfilePic">Profile Picture</a>
          
-         <!--   <a href="#" data-ng-click='logout()' data-ng-controller='UserController'>Profile Picture</a> -->
+           <!-- <a href="#" data-ng-click='logout()' data-ng-controller='UserController'>Profile Picture</a> -->
        
          </font>
   	  </div>

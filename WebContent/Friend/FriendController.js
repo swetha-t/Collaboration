@@ -10,10 +10,11 @@ app.controller("FriendController", function($scope, $http, $location,$rootScope)
 		.then(function(response) 
 			{
 			$scope.allFriendRequest = response.data;
-			console.log($scope.currentUser.username);
+		/*	console.log($scope.currentUser.username);*/
 			console.log($scope.allFriendRequest);
 			});
 		}
+		
 		fetchAllFriendRequests();
 		
 		$scope.approve=function(friendId)
@@ -23,8 +24,8 @@ app.controller("FriendController", function($scope, $http, $location,$rootScope)
 			.success(function(response)
 			{
 				console.log("successfully approved");
-				location.path("/showFriendRequest");
-			});
+/*				location.path("/showFriendRequest");
+*/			});
 			
 		}
 		$scope.reject=function(friendId)
@@ -33,7 +34,7 @@ app.controller("FriendController", function($scope, $http, $location,$rootScope)
 			$http.get("http://localhost:8181/Collabaration/rejectFriendRequest/"+friendId)
 			.success(function(response){
 				console.log("successfully rejected");
-				location.path("/showFriendRequest");
+			/*	location.path("/showFriendRequest");*/
 			});
 		};
 		$scope.addFriend=function()

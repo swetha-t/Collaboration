@@ -12,7 +12,8 @@ app.controller("ChatController", function($scope,$rootScope,chatService)
 	};
 
 	chatService.receive().then(null,null,function(message)
-	{
+	{ 
+		console.log('Receive Message Called');
 		$scope.messages.push(message);
 	});	
 

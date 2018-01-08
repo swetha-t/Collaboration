@@ -1,5 +1,3 @@
-	
-	
 app.controller("BlogController",function($scope,$http,$location,$rootScope)
 		
 		{
@@ -32,11 +30,11 @@ app.controller("BlogController",function($scope,$http,$location,$rootScope)
 		{
 			console.log('Entering to Delete Blog');
 			$http.get('http://localhost:8181/Collabaration/deleteBlog/'+blogId)
-			.success(fetchAllBlog(),function(response)
+			.then(function(response)
 					{
 					console.log('Successful Deletion');
 					$scope.refresh();
-					$location.path("/Blog");
+				/*	$location.path("/Blog");*/
 					});
 		};
 		
@@ -68,5 +66,3 @@ app.controller("BlogController",function($scope,$http,$location,$rootScope)
 
 	
 });
-
-

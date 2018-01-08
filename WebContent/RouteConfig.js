@@ -21,18 +21,30 @@ app.config(function($routeProvider, $locationProvider) {
     	  templateUrl:"Blog/ViewBlog.html",
     	  controller:"BlogController"
     		  })
-    		  
       
-       .when("/forum",{
-    	   templateUrl:"forum/forum.html",
-    		   controller:"forumController"  
-       })
-       
-        .when("/adminBlog",{
+   	   .when("/adminBlog",{
         	templateUrl:"Blog/adminBlog.html",
         	controller:"adminBlogController"
         })
         
+      
+       .when("/postforum",{
+    	   templateUrl:"forum/forum.html",
+    		   controller:"forumController"  
+       })
+       
+       .when("/viewforum",{
+    	  templateUrl:"forum/ViewForum.html",
+    	  controller:"forumController"
+    		  })
+    		  
+        .when("/adminForum",{
+        	templateUrl:"forum/adminForum.html",
+        	controller:'adminForumController'
+        })
+        		  
+       
+       
          .when("/jobs",{
         	 templateUrl:"jobs/jobs.html",
         	 controller:"jobsController"
@@ -52,18 +64,23 @@ app.config(function($routeProvider, $locationProvider) {
     
      .when("/Friend",{
     	 templateUrl:"user/Friend.html",
-    	 controller:"userController"
+    	 controller:"UserController"
      })
     
      .when("/registration",{
     	 
     	 templateUrl:"user/registration.html",
-    	 controller:"userController"
+    	 controller:"UserController"
      
      	})
      	
-     	 .when("/FriendRequest",{
-     		 templateUrl:"Friend/ShowFriendRequest.html",
+     	 .when("/Friend",{
+     		 templateUrl:"Friend/Friend.html",
+     		 controller:"FriendController"
+     	 })
+     	 
+     	  .when("/ShowFriendRequest",{
+     		 templateUrl:"Friend/showFriendRequest.html",
      		 controller:"FriendController"
      	 })
      	.when('/Chat', {
@@ -71,7 +88,10 @@ app.config(function($routeProvider, $locationProvider) {
      		controller : "ChatController"
      			})
      	
-     	
+      .when("/ProfilePic",{
+    	  templateUrl:"user/ProfilePic.html",
+    		  controller:"UserController"
+    		  })
      });
 
 app.run(function($rootScope,$cookieStore){
