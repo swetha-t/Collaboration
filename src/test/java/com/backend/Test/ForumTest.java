@@ -41,7 +41,7 @@ static ForumDAO  forumDAO;
 		forum.setForumName("SuggestForum");
 		forum.setForumContent("Get suggestions");
 		forum.setUserId(104);
-		forum.setStatus("A");
+	/*	forum.setStatus("A");*/
 		forum.setCreateDate(new java.util.Date());
 		
 		assertTrue("Problem in Inserting forum", forumDAO.addForum(forum));
@@ -79,7 +79,7 @@ static ForumDAO  forumDAO;
 	@Test
 	public void approveForumTest(){
 		Forum forum=(Forum)forumDAO.getForum(115);
-		assertTrue("Problem in approving",forumDAO.approveForum(forum));
+		assertTrue("Problem in approving",forumDAO.approveForum("A", forum));
 	}
 	
 	@Test

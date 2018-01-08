@@ -15,7 +15,7 @@ public boolean addBlog(Blog blog);
 	
 	public List<Blog> getAllBlogs();
 	
-	public boolean approveBlog(Blog blog);
+	public boolean approveBlog(String status,Blog blog);
 	
 	public boolean rejectBlog(Blog blog);
 	

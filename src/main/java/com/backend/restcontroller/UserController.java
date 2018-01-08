@@ -67,7 +67,7 @@ public class UserController {
 			if (userExists) 
 			{
 				userDAO.updateOnlineStatus("Y",user);
-				session.setAttribute("username", user.getUsername());
+				session.setAttribute("user",user);
 				return new ResponseEntity<UsersDetails>(user, HttpStatus.OK);
 			} 
 			else {
@@ -101,7 +101,7 @@ public class UserController {
 		if (userExists) 
 		{
 			userDAO.updateOnlineStatus("N",user);
-			session.removeAttribute("username");
+			session.removeAttribute("user");
 			return new ResponseEntity<String>("Logout succesfully", HttpStatus.OK);
 		} 
 		else {

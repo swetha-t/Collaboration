@@ -80,7 +80,7 @@ static BlogDAO blogDAO;
 	@Test
 	public void approveBlogTest(){
 		Blog blog=(Blog)blogDAO.getBlog(1001);
-		assertTrue("Problem in approving",blogDAO.approveBlog(blog));
+		assertTrue("Problem in approving",blogDAO.approveBlog("A", blog));
 	}
 	
 	@Test

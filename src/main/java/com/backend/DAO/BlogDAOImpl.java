@@ -56,6 +56,7 @@ public class BlogDAOImpl implements BlogDAO {
   		}	
 	}
 
+	@Transactional
 	public boolean deleteBlog(Blog blog) {
 		try
   		{
@@ -89,10 +90,10 @@ Session session=sessionFactory.openSession();
 		return blogList;
 	}
 	
-@Transactional
-	public boolean approveBlog(Blog blog) {
+   @Transactional
+	public boolean approveBlog(String status,Blog blog) {
 		try{
-						blog.setStatus("A");
+						blog.setStatus(status);
 			 				sessionFactory.getCurrentSession().saveOrUpdate(blog);
 			 				return true;
 			 		}
@@ -166,6 +167,8 @@ public boolean incrementLike(Blog blog) {
 		return false;
 	}
 }
+
+
 	}
 
 

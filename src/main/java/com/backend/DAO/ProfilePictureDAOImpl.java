@@ -19,26 +19,24 @@ public class ProfilePictureDAOImpl implements ProfilePictureDAO {
 		this.sessionFactory = sessionFactory;
 	}
 
+
 	@Transactional
-	public boolean save(ProfilePicture profilePicture) {
-
-		try 
-		{
-			sessionFactory.getCurrentSession().save(profilePicture);
-			return true;
-		} catch (Exception e) 
-		{
-			System.out.println("exception arised" + e);
-			return false;
-		}
-	}
-
 	public ProfilePicture getProfilePicture(String username) {
 
 		Session session = sessionFactory.openSession();
 		ProfilePicture profilePicture = (ProfilePicture) session.get(ProfilePicture.class, username);
 		session.close();
 		return profilePicture;
+	}
+
+	@Transactional
+	public void saveProfilePicture(ProfilePicture profilePicture) {
+		Session session=sessionFactory.openSession();
+		session.saveOrUpdate(profilePicture);
+		session.flush();
+		session.close();
+		
+		
 	}
 
 }

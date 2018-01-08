@@ -24,6 +24,7 @@ public class JobController {
 	@PostMapping(value="/insertJob")
 	public ResponseEntity<String> insertJob(@RequestBody Job job)
 	{
+		job.setPostDate(new java.util.Date());
 		if(jobDAO.addJob(job))
 		{
 			return new ResponseEntity<String>("Job Added",HttpStatus.OK);

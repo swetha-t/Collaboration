@@ -1,6 +1,7 @@
 package com.backend.restcontroller;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -78,17 +79,21 @@ UsersDetails	userDetail=(UsersDetails)session.getAttribute("üser");
 		}
 	}
 	
-	@GetMapping(value="/getAllBlogs")
-	public ResponseEntity<ArrayList<Blog>> getAllBlogs()
-	{
-		ArrayList listBlogs=(ArrayList)blogDAO.getAllBlogs();
-		return new ResponseEntity<ArrayList<Blog>>(listBlogs,HttpStatus.SERVICE_UNAVAILABLE);
-	}
+	@GetMapping("/getAllBlogs")
+	public ResponseEntity<List<Blog>> listofAllBlogs() {
+        List<Blog> blog = blogDAO.getAllBlogs();
+        if(blog.isEmpty()){
+            return new ResponseEntity<List<Blog>>(HttpStatus.NO_CONTENT);//You many decide to return HttpStatus.NOT_FOUND
+        }
+        return new ResponseEntity<List<Blog>>(blog, HttpStatus.OK);
+    }
+  
+  
 	@GetMapping("/approveBlog/{blogId}")
 	public ResponseEntity<String> approveBlog(@PathVariable("blogId") int blogId) {
 		Blog tempblog = blogDAO.getBlog(blogId);
 
-		if (blogDAO.approveBlog(tempblog)) {
+		if (blogDAO.approveBlog("A", tempblog)) {
 			return new ResponseEntity<String>("Blog updated", HttpStatus.OK);
 		} else {
 			return new ResponseEntity<String>("error in Blog updation", HttpStatus.METHOD_FAILURE);
@@ -106,6 +111,7 @@ UsersDetails	userDetail=(UsersDetails)session.getAttribute("üser");
 
 		}
 	}
+	
 	@GetMapping("/incLike/{blogId}")
 	public ResponseEntity<String> incrementLike(@PathVariable("blogId") int blogId)
 	{

@@ -12,7 +12,7 @@ public class Friend {
 	@GeneratedValue
 	int friendId;
 	String friendName;
-	String userName;
+	String username;
 	String status;
 	public int getFriendId() {
 		return friendId;
@@ -27,11 +27,12 @@ public class Friend {
 	public void setFriendName(String friendName) {
 		this.friendName = friendName;
 	}
-	public String getUserName() {
-		return userName;
+
+	public String getUsername() {
+		return username;
 	}
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 	public String getStatus() {
 		return status;

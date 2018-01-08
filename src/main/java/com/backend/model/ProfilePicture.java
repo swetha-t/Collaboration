@@ -10,18 +10,22 @@ import org.springframework.stereotype.Component;
 @Entity
 @Component
 public class ProfilePicture {
+	
 	@Id
-	@GeneratedValue
-	private String userName;
+
+
+	private String username;
 	
 	@Lob
 	private byte[] image;
 	
-	public String getUserName() {
-		return userName;
+	
+
+	public String getUsername() {
+		return username;
 	}
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 	public byte[] getImage() {
 		return image;

@@ -15,6 +15,7 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import com.backend.DAO.ProfilePictureDAO;
 import com.backend.model.ProfilePicture;
+import com.backend.model.UsersDetails;
 
 @RestController
 public class ProfilePictureController {
@@ -24,9 +25,39 @@ public class ProfilePictureController {
 	@PostMapping("/doUpload")
 	public ResponseEntity<?> uploadProfilePicture(@RequestParam(value="file") CommonsMultipartFile fileUpload,HttpSession session)
 	{
-		System.out.println("uploading picture");
+		
+		UsersDetails users=(UsersDetails)session.getAttribute("user");
+		if(users==null)		{
+			   Error error=new Error("UnAuthorized user");
+				return new ResponseEntity<Error>(error,HttpStatus.UNAUTHORIZED);
+		} 
 		ProfilePicture profilePicture=new ProfilePicture();
-		profilePicture.setUserName("swetha");
+		profilePicture.setUsername(users.getUsername());
+		profilePicture.setImage(fileUpload.getBytes());
+		profilePictureDAO.saveProfilePicture(profilePicture);
+		return new ResponseEntity<UsersDetails>(users,HttpStatus.OK);
+	}
+		
+		
+		@GetMapping(value="/getimage/{username}")
+		public @ResponseBody byte[] getProfilePic(@PathVariable String username,HttpSession session){
+			UsersDetails user=(UsersDetails)session.getAttribute("user");
+			if(user==null)
+				return null;
+			else
+			{
+				ProfilePicture profilePic=profilePictureDAO.getProfilePicture(username);
+				if(profilePic==null)
+					return null;
+				else
+					return profilePic.getImage();
+			}
+			
+	}
+		
+		/*System.out.println("uploading picture");
+		ProfilePicture profilePicture=new ProfilePicture();
+		profilePicture.setUsername("swetha");
 		System.out.println(fileUpload.getBytes());	
 		System.out.println("picture uploaded");
 		profilePicture.setImage(fileUpload.getBytes());
@@ -38,5 +69,6 @@ public class ProfilePictureController {
 	{
 		ProfilePicture profilePicture=profilePictureDAO.getProfilePicture(username);
 		return profilePicture.getImage();
-	}
+	}*/
+	
 }

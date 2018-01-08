@@ -90,21 +90,8 @@ public class ForumDAOImpl implements ForumDAO
 		return forumList;
 	}
 
-	@Transactional
-	public boolean approveForum(Forum forum) {
-		try{
-       forum.setStatus("A");
-			sessionFactory.getCurrentSession().saveOrUpdate(forum);
-			return true;
-			}
-			catch(Exception e)
-			{
-			System.out.println("Exception occured:"+e);
-			return false;
-			}	
-		}
 	
-
+	@Transactional
 	public boolean rejectForum(Forum forum) {
 		try{
 			forum.setStatus("N");
@@ -118,4 +105,19 @@ public class ForumDAOImpl implements ForumDAO
 			}	
 	}
 
-}
+@Transactional
+	public boolean approveForum(String status, Forum forum) {
+		try{
+		       forum.setStatus(status);
+					sessionFactory.getCurrentSession().saveOrUpdate(forum);
+					return true;
+					}
+					catch(Exception e)
+					{
+					System.out.println("Exception occured:"+e);
+					return false;
+					}	
+				}
+	}
+
+
