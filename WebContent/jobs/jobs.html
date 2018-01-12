@@ -5,7 +5,8 @@
 <div ng-controller="jobsController">
 
 	<form id="Jobsform" data-ng-submit="insertJobs()"method="post">
-		<table align="center" width="80%" border="1">
+				<table align="center" width="100%" border=1>
+		
 			<tr>
 				<td>Job Profile</td>
 				<td><input type="text" name="jobProfile" data-ng-model="job.jobProfile"/></td>
@@ -34,15 +35,16 @@
 	</form>
 
 <br/>
-	<table align="center" width="100" border=1>
-		
+		<div class="table-responsive">
+		<table id="myTable" class="table table-striped" style="width:100%" >
+		<thead>
 		<tr bgcolor="orange">
 			<td>Jobs Profile</td>
 			<td>Jobs Qualification</td>
 			<td>Jobs Description</td>
-			<td>Post Date</td>
+		
 		<td>Job Status</td>
-			
+			</thead>
 		</tr>
 		<tr bgcolor="cyan" ng-repeat="jobs in jobsdata">
 			<td>{{jobs.jobProfile}}</td>

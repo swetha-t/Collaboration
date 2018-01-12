@@ -1,8 +1,21 @@
 
+<style>
+ body 
+ 	{
+        background-color: #fbe9e7;
+    }
+.vertical-offset-100{
+    padding-top:10px;
+
+}
+</style>
+
 
 <div ng-controller="jobsController">
-<table align="center" width="100" border=1>
-		
+
+		<div class="table-responsive">
+	<table id="myTable" class="table table-striped" style="width:100%" >
+		<thead>
 		<tr bgcolor="orange">
 			<td>Jobs Profile</td>
 			<td>Jobs Qualification</td>
@@ -11,6 +24,7 @@
 		<td>Job Status</td>
 			
 		</tr>
+		</thead>
 		<tr bgcolor="cyan" ng-repeat="jobs in jobsdata">
 			<td>{{jobs.jobProfile}}</td>
 			<td>{{jobs.qualification}}</td>

@@ -68,6 +68,8 @@ app.controller("UserController", function($scope, $http, $location,$rootScope,$c
 		console.log($rootScope.currentUser.role);
 		$location.path("/logout");
 	})*/
+	
+	
 	});
 
 

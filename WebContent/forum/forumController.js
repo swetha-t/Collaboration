@@ -31,6 +31,19 @@
 		});
 	};
 	
+	$scope.editForum=function(forumId)
+	{
+		console.log('Entering to the edit forum ');
+		$http.get('http://localhost:8181/Collabaration/editForum/'+forumId)
+		.success(fetchAllForum(),function(response)
+				{
+				console.log('Editing');
+				$scope.forum=response.data;
+				console.log($scope.forum);
+				$location.path("/forum");
+				});	
+	}
+	
 });
 
 	

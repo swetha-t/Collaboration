@@ -61,6 +61,11 @@ app.config(function($routeProvider, $locationProvider) {
     	controller:"UserController"
     		
     })
+      .when("/Userhome",{
+    	templateUrl:"user/UserHome.html",
+    	controller:"UserController"
+    		
+    })
     
      .when("/Friend",{
     	 templateUrl:"user/Friend.html",
@@ -74,15 +79,21 @@ app.config(function($routeProvider, $locationProvider) {
      
      	})
      	
-     	 .when("/Friend",{
+     	.when("/Friend",{
      		 templateUrl:"Friend/Friend.html",
      		 controller:"FriendController"
      	 })
      	 
      	  .when("/ShowFriendRequest",{
-     		 templateUrl:"Friend/showFriendRequest.html",
+     		 templateUrl:"Friend/ShowFriendRequest.html",
      		 controller:"FriendController"
      	 })
+     	 
+     	/* .when("/Sendrequest",{
+     		 templateUrl:"Friend/Sendrequest.html",
+     		 controller:"alluserctrl"
+     	 })*/
+     	 
      	.when('/Chat', {
      		templateUrl : 'Chat/Chat.html',
      		controller : "ChatController"
@@ -111,3 +122,5 @@ app.run(function($rootScope,$cookieStore){
 app.controller("mainController", function($scope) {
 	$scope.message = "This is home page";
 });
+
+

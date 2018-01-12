@@ -14,12 +14,8 @@
 	<tr ng-repeat="user in allusers" bgcolor="gray">
 		<td>{{user.username}}</td>
 		<td>{{user.firstName}}</td>
-		<td ng-show="user.isOnline=='Y'">
-			Online
-		</td>
-		<td ng-show="user.isOnline=='N'">
-			Offline
-		</td>
+		<td ng-show="user.isOnline=='Y'">	Online</td>
+		<td ng-show="user.isOnline=='N'">	Offline</td>
 	</tr>
 	
 
