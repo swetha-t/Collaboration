@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.backend.DAO.FriendDAO;
 import com.backend.model.Friend;
-import com.backend.model.UsersDetails;
 
 @RestController
 public class FriendController {
@@ -61,12 +60,12 @@ public class FriendController {
 	@GetMapping(value="/getAllFriendRequest")
 	public ResponseEntity<List<Friend>> getAllFriendRequest(HttpSession session)
 	{
-	//	UsersDetails	userDetail=(UsersDetails)session.getAttribute("üser");
-
-		String currentUser=(String)session.getAttribute("currentUser");
-		currentUser="mayank";
-		System.out.println("Current User:"+currentUser);
-		List<Friend> listFriendRequests=friendDAO.getAllFriendRequest(currentUser);
-		return new ResponseEntity<List<Friend>>(listFriendRequests,HttpStatus.OK);
+//		UsersDetails	userDetail=(UsersDetails)session.getAttribute("üser");
+		 
+		  		String currentUser=(String)session.getAttribute("currentUser");
+		 		currentUser="mayank";
+		 		System.out.println("Current User:"+currentUser);
+		  		List<Friend> listFriendRequests=friendDAO.getAllFriendRequest(currentUser);
+		  		return new ResponseEntity<List<Friend>>(listFriendRequests,HttpStatus.OK);
 	}
 }
